@@ -5,7 +5,7 @@ session_start();
 
 $client = new Google_Client();
 $client->setAuthConfigFile('client_secret.json');
-$client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php');
+$client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 $client->addScope(Google_Service_Drive::DRIVE_METADATA_READONLY);
 
 if (! isset($_GET['code'])) {
